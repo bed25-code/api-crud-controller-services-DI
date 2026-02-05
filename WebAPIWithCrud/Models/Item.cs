@@ -2,7 +2,11 @@ namespace WebAPIWithCrud.Models;
 
 
 //Model
-public class Items
+
+// Ändra variabelnamn i hela Solution samtidigt
+// Markera
+// CTRL + R R
+public class Item
 {
     public int Id { get; set; }
     public string Name { get; set; } = "";

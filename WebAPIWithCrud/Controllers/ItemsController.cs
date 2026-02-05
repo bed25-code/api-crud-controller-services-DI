@@ -23,7 +23,7 @@ public class ItemsController : ControllerBase
     //}
 
     [HttpGet]
-    public ActionResult<IEnumerable<Items>> Get([FromQuery] string? name)
+    public ActionResult<IEnumerable<Item>> Get([FromQuery] string? name)
     {
         if (!string.IsNullOrWhiteSpace(name))
         {
@@ -36,7 +36,7 @@ public class ItemsController : ControllerBase
     }
 
     [HttpGet("{id:int}")]
-    public ActionResult<Items> Get(int id)
+    public ActionResult<Item> Get(int id)
     {
         var item = _itemsService.GetById(id);
         if (item == null)
@@ -46,14 +46,14 @@ public class ItemsController : ControllerBase
 
 
     [HttpPost]
-    public ActionResult<Items> Create(Items item)
+    public ActionResult<Item> Create(Item item)
     {
         var created = _itemsService.Create(item);
         return Created($"/api/items/{created.Id}", created);
     }
 
     [HttpPut("{id:int}")]
-    public ActionResult Update(int id, Items item)
+    public ActionResult Update(int id, Item item)
     {
         if (!_itemsService.Update(id, item))
             return NotFound();

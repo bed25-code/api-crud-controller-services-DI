@@ -7,12 +7,12 @@ namespace WebAPIWithCrud.Services;
 /// </summary>
 public class ItemsService
 {
-    private readonly List<Items> _items = new();
+    private readonly List<Item> _items = new();
     private int _nextId = 1;
 
-    public IEnumerable<Items> GetAll() => _items;
+    public IEnumerable<Item> GetAll() => _items;
 
-    public Items? GetById(int id)
+    public Item? GetById(int id)
     {
         foreach (var item in _items)
         {
@@ -22,7 +22,7 @@ public class ItemsService
         return null;
     }
 
-    public Items? GetByName(string name)
+    public Item? GetByName(string name)
     {
         foreach (var item in _items)
         {
@@ -32,7 +32,7 @@ public class ItemsService
         return null;
     }
 
-    public Items Create(Items item)
+    public Item Create(Item item)
     {
         item.Id = _nextId;
         _nextId++;
@@ -40,11 +40,11 @@ public class ItemsService
         return item;
     }
 
-    public bool Update(int id, Items item)
+    public bool Update(int id, Item item)
     {
-        Items? existingItem = null;
+        Item? existingItem = null;
 
-        foreach (Items candidate in _items)
+        foreach (Item candidate in _items)
         {
             if (candidate.Id == id)
             {
